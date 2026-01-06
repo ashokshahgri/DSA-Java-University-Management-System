@@ -36,9 +36,5 @@ A comprehensive **University Management System** built from scratch using **Java
 
 ---
 
-## 📸 Screenshots
-
----
-
 ## 👨‍💻 Contributors
 * **[Sineha Tharwani]https://github.com/sinehatharwani** -
