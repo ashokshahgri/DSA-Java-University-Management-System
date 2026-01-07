@@ -6,7 +6,7 @@ public class RoundedButton extends JButton {
 
     public RoundedButton(String text, Color bg) {
         super(text);
-        setBackground(bg); // Set the initial color using standard Swing method
+        setBackground(bg); 
         setContentAreaFilled(false);
         setFocusPainted(false);
         setBorderPainted(false);
@@ -20,7 +20,7 @@ public class RoundedButton extends JButton {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // FIX: Use getBackground() instead of a fixed variable
+        
         g2.setColor(getBackground());
 
         g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 30, 30));
@@ -31,4 +31,5 @@ public class RoundedButton extends JButton {
         g2.drawString(getText(), x, y);
         g2.dispose();
     }
+
 }
