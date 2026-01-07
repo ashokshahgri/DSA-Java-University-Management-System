@@ -9,13 +9,13 @@ import java.util.Scanner;
 
 public class UniversitySystemGUI extends JFrame {
 
-    // Entity Lists
+    
     private MyList<Student> students = new MyList<>();
     private MyList<Professor> professors = new MyList<>();
     private MyList<Course> courses = new MyList<>();
     private MyList<Enrollment> enrollments = new MyList<>();
 
-    // === CLEAN WHITE PALETTE ===
+    
     private final Color NAV_BAR_BG = new Color(245, 245, 245);
     private final Color CONTENT_BG = new Color(255, 255, 255);
     private final Color PRIMARY_BTN = new Color(0, 6, 65);
@@ -26,18 +26,18 @@ public class UniversitySystemGUI extends JFrame {
 
     private final int INPUT_RADIUS = 15;
 
-    // Navigation Buttons
+    
     private RoundedButton btnStudentTab;
     private RoundedButton btnProfTab;
     private RoundedButton btnCourseTab;
     private RoundedButton btnAssignTab;
     private RoundedButton btnFilterTab;
 
-    // Layout
+    
     private CardLayout cardLayout = new CardLayout();
     private JPanel mainContentPanel = new JPanel(cardLayout);
 
-    // Tables & Inputs
+    
     private JTable tblStudent, tblProfessor, tblCourse;
     private DefaultTableModel modelStudent, modelProfessor, modelCourse;
     private JComboBox<String> cmbProfessorsForCourse;
@@ -52,7 +52,7 @@ public class UniversitySystemGUI extends JFrame {
 
         loadData();
 
-        // --- 1. TOP NAVIGATION BAR ---
+        
         JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         navPanel.setBackground(NAV_BAR_BG);
 
@@ -70,7 +70,7 @@ public class UniversitySystemGUI extends JFrame {
 
         add(navPanel, BorderLayout.NORTH);
 
-        // --- 2. MAIN CONTENT AREA ---
+        
         mainContentPanel.setBackground(CONTENT_BG);
         mainContentPanel.add(createStudentPanel(), "STUDENTS");
         mainContentPanel.add(createProfessorPanel(), "PROFESSORS");
@@ -362,7 +362,7 @@ public class UniversitySystemGUI extends JFrame {
         while (p != null) { cmbProfessorsForCourse.addItem(p.data.getName()); p = p.next; }
     }
 
-    // === ALIGNMENT FIX FOR ASSIGNMENTS ===
+    
     private JPanel createAssignmentPanel() {
         JPanel panel = new JPanel(new BorderLayout(15, 10));
         panel.setBackground(CONTENT_BG);
@@ -372,7 +372,7 @@ public class UniversitySystemGUI extends JFrame {
         grid.setBackground(CONTENT_BG);
 
         // ENROLL
-        JPanel pnlEnroll = new JPanel(new GridBagLayout()); // Using GridBag for precise alignment
+        JPanel pnlEnroll = new JPanel(new GridBagLayout()); 
         pnlEnroll.setBackground(new Color(245, 245, 245));
         pnlEnroll.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "ENROLL STUDENT", 0, 0, new Font("Segoe UI", Font.BOLD, 12), TEXT_COLOR));
 
@@ -383,7 +383,7 @@ public class UniversitySystemGUI extends JFrame {
 
         addAssignmentRow(pnlEnroll, "Student ID:", txtSid, "Course ID:", txtCid, btnEnroll);
 
-        // ASSIGN
+        
         JPanel pnlAssign = new JPanel(new GridBagLayout());
         pnlAssign.setBackground(new Color(245, 245, 245));
         pnlAssign.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "ASSIGN PROFESSOR", 0, 0, new Font("Segoe UI", Font.BOLD, 12), TEXT_COLOR));
@@ -424,25 +424,25 @@ public class UniversitySystemGUI extends JFrame {
         return panel;
     }
 
-    // Helper for Assignment Row Alignment
+    
     private void addAssignmentRow(JPanel p, String l1, Component c1, String l2, Component c2, Component btn) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 5, 10, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Col 1: Label 1 (Fixed width for alignment)
+        
         gbc.gridx = 0; p.add(createLabel(l1), gbc);
 
-        // Col 2: Field 1
+        
         gbc.gridx = 1; gbc.weightx = 1.0; p.add(c1, gbc);
 
-        // Col 3: Label 2
+        
         gbc.gridx = 2; gbc.weightx = 0; p.add(createLabel(l2), gbc);
 
-        // Col 4: Field 2
+        
         gbc.gridx = 3; gbc.weightx = 1.0; p.add(c2, gbc);
 
-        // Col 5: Button
+        
         gbc.gridx = 4; gbc.weightx = 0; p.add(btn, gbc);
     }
 
@@ -461,7 +461,7 @@ public class UniversitySystemGUI extends JFrame {
         cmbFilter.setBorder(new RoundedBorder(INPUT_RADIUS, INPUT_BORDER));
         cmbFilter.setBackground(Color.WHITE);
 
-        // **COLOR FIX: Blue**
+        
         RoundedButton btnDeptFilter = new RoundedButton("FILTER", ACCENT_COLOR);
         btnDeptFilter.setPreferredSize(new Dimension(80, 30));
 
@@ -478,7 +478,7 @@ public class UniversitySystemGUI extends JFrame {
 
         JTextField txtSearchCourse = new JTextField(); txtSearchCourse.setBorder(new RoundedBorder(INPUT_RADIUS, INPUT_BORDER));
 
-        // **COLOR FIX: Blue**
+        
         RoundedButton btnSearchCourse = new RoundedButton("FIND COURSE", ACCENT_COLOR);
         btnSearchCourse.setPreferredSize(new Dimension(120, 30));
         gbc.gridx = 0; gbc.gridy = 2; topPanel.add(createLabel("SEARCH COURSE:"), gbc);
@@ -542,7 +542,7 @@ public class UniversitySystemGUI extends JFrame {
         return panel;
     }
 
-    // --- HELPER METHODS CORRECTLY PLACED INSIDE THE CLASS ---
+    
     private <T> void refreshTable(DefaultTableModel model, Node<T> head) {
         model.setRowCount(0);
         while (head != null) {
@@ -640,4 +640,5 @@ public class UniversitySystemGUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(UniversitySystemGUI::showLoginScreen);
     }
+
 }
