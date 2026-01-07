@@ -17,7 +17,7 @@ public class MyList<T> {
 
     public Node<T> getHead() { return head; }
 
-    // --- LINEAR SEARCH (Standard) ---
+    
     public boolean removeById(String id) {
         if(head == null) return false;
 
@@ -58,7 +58,7 @@ public class MyList<T> {
         return null;
     }
 
-    // --- BUBBLE SORT (Required for Binary Search) ---
+    
     public void bubbleSort() {
         if (head == null || head.next == null) return;
 
@@ -78,7 +78,7 @@ public class MyList<T> {
                 if (index.data instanceof Person) id2 = ((Person)index.data).getId();
                 else if (index.data instanceof Course) id2 = ((Course)index.data).getId();
 
-                // Swap Logic (Swapping Data, not Pointers)
+                
                 if (id1.compareTo(id2) > 0) {
                     temp = current.data;
                     current.data = index.data;
@@ -89,9 +89,7 @@ public class MyList<T> {
             current = current.next;
         }
     }
-
-    // --- NEW: BINARY SEARCH ---
-    // Helper to find the middle node
+    
     private Node<T> getMiddle(Node<T> start, Node<T> last) {
         if (start == null) return null;
         Node<T> slow = start;
@@ -107,7 +105,7 @@ public class MyList<T> {
     }
 
     public T binarySearch(String id) {
-        // Binary search REQUIRES sorted data.
+        
 
         Node<T> start = head;
         Node<T> last = null;
@@ -121,16 +119,17 @@ public class MyList<T> {
             else if (mid.data instanceof Course) midId = ((Course)mid.data).getId();
 
             if (midId.equals(id)) {
-                return mid.data; // FOUND
+                return mid.data; 
             }
             else if (midId.compareTo(id) < 0) {
-                start = mid.next; // Go Right
+                start = mid.next;
             }
             else {
-                last = mid; // Go Left
+                last = mid; 
             }
         } while (last == null || last != start);
 
-        return null; // Not Found
+        return null; 
     }
+
 }
