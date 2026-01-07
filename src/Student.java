@@ -1,5 +1,5 @@
 public class Student extends Person {
-    private int age; // Changed to int
+    private int age; 
     private String email;
     private String department;
 
@@ -10,7 +10,7 @@ public class Student extends Person {
         this.department = dept;
     }
 
-    public int getAge() { return age; } // Returns int
+    public int getAge() { return age; } 
     public String getEmail() { return email; }
     public String getDepartment() { return department; }
 
@@ -20,4 +20,5 @@ public class Student extends Person {
     }
 
     public Object[] toRow() { return new Object[]{id, name, age, email, department}; }
+
 }
